@@ -1,5 +1,210 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+struct Sales_data
+{
+	string bookNo;
+
+	//	unsigned units_sold = 0;  //CPP11特性
+	//	double revenue = 0.0;
+
+	unsigned units_sold;
+	double revenue;
+
+	string isbn() const { return bookNo; }
+	Sales_data&  combine(const Sales_data&);
+	
+	Sales_data add(Sales_data& lhs, Sales_data& rhs);
+
+};
+
+Sales_data& Sales_data::combine(const Sales_data& rhs)
+{
+	units_sold	+= rhs.units_sold;
+	revenue		+= rhs.revenue;
+	return *this;
+}
+
+
+
+Sales_data add(const Sales_data& lhs, const Sales_data& rhs);
+istream &read (istream& input, Sales_data& item);
+ostream &print(ostream& output, const Sales_data& item);
+
+Sales_data add(const Sales_data& lhs, const Sales_data& rhs)
+{
+	Sales_data sum = lhs;
+	sum.combine(rhs);
+	return sum;
+}
+
+istream& read(istream& input, Sales_data& item)
+{
+	double price = 0;
+	input >> item.bookNo >> item.units_sold >> price;
+	item.revenue = price * item.units_sold;
+	return input;
+}
+
+ostream& print(ostream& output, const Sales_data& item)
+{
+	output << item.bookNo << " " << item.units_sold << " " << item.revenue << endl;
+	return output;
+}
+
+int main()
+{
+	Sales_data total;
+
+	if (read(cin, total))
+	{
+		Sales_data trans;
+		while (read(cin, trans))
+		{
+			if (total.isbn() == trans.isbn())
+				add(total, trans);
+			    //total.combine(trans);
+			else
+			{
+				print(cout, total) << endl;
+				total = trans;
+			}
+		}
+		print(cout, total) << endl;
+	}else
+	{
+		cerr << "No data?!" << endl;
+		return -1;
+	}
+
+	system("pause");
+	return 0;
+}
 
 #if 0
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+//using namespace std;
+
+class Person
+{
+public:
+	Person();
+	~Person();
+
+	std::string getName() const{ return mName; }
+	std::string getAddress() const{ return mAddress; }
+	// 需要const，const的作用是修改隐式指针this，只需要读取不需要修改可以使用const，提高灵活性。
+
+private:
+	std::string mName;
+	std::string mAddress;
+};
+
+
+
+#include <iostream>
+#include <string>
+#include <cstdlib>
+using namespace std;
+
+struct Sales_data
+{
+	string bookNo;
+
+	//	unsigned units_sold = 0;  //CPP11特性
+	//	double revenue = 0.0;
+
+	unsigned units_sold;
+	double revenue;
+
+	string isbn() const { return bookNo; }
+	Sales_data&  combine(const Sales_data&);
+};
+
+Sales_data& Sales_data::combine(const Sales_data& rhs)
+{
+	units_sold	+= rhs.units_sold;
+	revenue		+= rhs.revenue;
+	return *this;
+}
+int main()
+{
+	Sales_data total;
+
+	if (cin >> total.bookNo >> total.units_sold >> total.revenue)
+	{
+		Sales_data trans;
+		while (cin >> trans.bookNo >> trans.units_sold >> trans.revenue)
+		{
+			if (total.isbn() == trans.isbn())
+				total.combine(trans);
+			else
+			{
+				cout << total.bookNo << " " << total.units_sold << " " << total.revenue << endl; 
+				total = trans;
+			}
+		}
+		cout << total.bookNo << " " << total.units_sold << " " << total.revenue << endl; 
+	}else
+	{
+		cerr << "No data?!" << endl;
+		return -1;
+	}
+
+	system("pause");
+	return 0;
+}
+
+
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+struct Sales_data
+{
+	string bookNo;
+
+//	unsigned units_sold = 0;  //CPP11特性
+//	double revenue = 0.0;
+
+	unsigned units_sold;
+	double revenue;
+};
+
+int main()
+{
+	Sales_data total;
+	if (cin >> total.bookNo >> total.units_sold >> total.revenue) {
+		Sales_data trans;
+		while (cin >> trans.bookNo >> trans.units_sold >> trans.revenue) {
+			if (total.bookNo == trans.bookNo) {
+				total.units_sold += trans.units_sold;
+				total.revenue += trans.revenue;
+			}
+			else {
+				cout << total.bookNo << " " << total.units_sold << " " << total.revenue << endl;
+				total = trans;
+			}
+		}
+		cout << total.bookNo << " " << total.units_sold << " " << total.revenue << endl;
+	}
+	else {
+		std::cerr << "No data?!" << std::endl;
+		return -1;
+	}
+		system("pause");
+	return 0;
+}
+
+
 #include <iostream>
 #include <cstdlib>
 
