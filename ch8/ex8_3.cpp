@@ -1,0 +1,3 @@
+
+
+// eofbit badbit failbit
