@@ -1,5 +1,5 @@
-﻿生成启动时间为 2015/10/8 14:21:58。
-     1>项目“F:\github\CppPrimer\TestPrpject\TestPrpject\TestPrpject.vcxproj”在节点 2 上(Build 个目标)。
+﻿生成启动时间为 2015/10/14 20:47:45。
+     1>项目“F:\github\CppPrimer\TestPrpject\TestPrpject\TestPrpject.vcxproj”在节点 2 上(Rebuild 个目标)。
      1>ClCompile:
          D:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
@@ -8,8 +8,8 @@
          正在生成代码
          已完成代码的生成
          TestPrpject.vcxproj -> F:\github\CppPrimer\TestPrpject\Release\TestPrpject.exe
-     1>已完成生成项目“F:\github\CppPrimer\TestPrpject\TestPrpject\TestPrpject.vcxproj”(Build 个目标)的操作。
+     1>已完成生成项目“F:\github\CppPrimer\TestPrpject\TestPrpject\TestPrpject.vcxproj”(Rebuild 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:01.67
+已用时间 00:00:01.57
